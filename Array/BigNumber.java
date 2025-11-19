@@ -4,16 +4,20 @@ public class BigNumber {
     private byte[] data;
 
     public BigNumber(String number) throws Exception {
+        data = new byte[number.length()];
 
         for (int i = 0; i < number.length(); i++) {
 
             char temp = number.charAt(i);
 
             if (!Character.isDigit(temp)) {
+
+                this.data = null;
+
                 throw new Exception("Invalid number entered!");
             }
 
-            this.data[i] = (byte) (temp);
+            this.data[i] = (byte) (Integer.parseInt(temp + ""));
         }
 
     }
@@ -24,22 +28,14 @@ public class BigNumber {
 
     }
 
-    @Override
-    public String toString() {
+    public String String() {
         String out = "";
-        
-        
-        for(byte digit: this.data) out = out + digit;
 
-        return super.toString();
+        for (byte digit : this.data) {
+            out = out + digit;
+        }
+
+        return out;
     }
 
-}
-
-
-public class test{
-    public static void main(String[] args) throws Exception {
-         BigNumber a = new BigNumber("1234567890");
-         System.out.println(a.toString());
-    }
 }
