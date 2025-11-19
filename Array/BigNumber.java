@@ -24,4 +24,22 @@ public class BigNumber {
 
     }
 
+    @Override
+    public String toString() {
+        String out = "";
+        
+        
+        for(byte digit: this.data) out = out + digit;
+
+        return super.toString();
+    }
+
+}
+
+
+public class test{
+    public static void main(String[] args) throws Exception {
+         BigNumber a = new BigNumber("1234567890");
+         System.out.println(a.toString());
+    }
 }
