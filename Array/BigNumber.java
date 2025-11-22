@@ -3,6 +3,10 @@ public class BigNumber {
 
     private byte[] data;
 
+    public BigNumber() {
+
+    }
+
     public BigNumber(byte[] data) throws Exception {
 
         for (byte digit : data) {
@@ -55,12 +59,38 @@ public class BigNumber {
         this.data = new byte[n];
     }
 
-    public void increment() {
+    public void shiftL(int n) {
+        int oldLength = this.data.length;
+        int newLength = this.data.length + n;
 
+        byte[] newData = new byte[newLength];
+
+        for (int i = 0; i < oldLength; i++) {
+
+            newData[i] = this.data[i];
+
+        }
     }
 
-    public void decrement() {
+    public void shiftL() {
+        this.shiftL(1);
+    }
 
+    public void shiftR(int n) {
+        int oldLength = this.data.length;
+        int newLength = this.data.length - n;
+
+        byte[] newData = new byte[newLength];
+
+        for (int i = 0; i < newLength; i++) {
+
+            newData[i] = this.data[i];
+
+        }
+    }
+
+    public void shiftR() {
+        this.shiftR(1);
     }
 
     public String toString() {
